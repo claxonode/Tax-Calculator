@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OOProgramming</name>
+    </assembly>
+    <members>
+        <member name="T:OOProgramming.Domain.Employee">
+            <summary>
+            Represents an employee
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.Employee.Id">
+            <summary>
+            Stores the employee's id
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.Employee.FirstName">
+            <summary>
+            Stores the employee's first name.
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.Employee.LastName">
+            <summary>
+            Stores the employee's last name.
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.Employee.PayRate">
+            <summary>
+            Stores the employee's pay rate
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.Employee.TaxThreshold">
+            <summary>
+            Store a boolean that determines if the employee want to withhold tax or not, True if they do,
+            false if they don't.
+            </summary>
+        </member>
+        <member name="M:OOProgramming.Domain.Employee.#ctor(System.Int32,System.String,System.String,System.Decimal,System.String)">
+            <summary>
+            Creates a employee
+            </summary>
+            <param name="id">The employee's id</param>
+            <param name="firstName">The employee's first name</param>
+            <param name="lastName">The employee's last name</param>
+            <param name="payRate">The employee's pay rate</param>
+            <param name="taxThreshold">The employee want to withhold tax or not for their payroll</param>
+        </member>
+        <member name="M:OOProgramming.Domain.Employee.ToString">
+            <summary>
+            Returns employee details to a string.
+            </summary>
+        </member>
+        <member name="M:OOProgramming.Domain.Employee.TaxThresholdToString">
+            <summary>
+            Returns the boolean of tax threshold to a string
+            </summary>
+        </member>
+        <member name="T:OOProgramming.Domain.PayCalculator">
+            <summary>
+            Used to calculate the employee's pay roll
+            </summary>
+        </member>
+        <member name="M:OOProgramming.Domain.PayCalculator.#ctor(System.Decimal[],System.Decimal[],System.Decimal[])">
+            <summary>
+            Creates a Pay Calculator
+            </summary>
+            <param name="weeklyPay">Range of weekly pay that calculates tax</param>
+            <param name="taxA">Range of tax coefficent A</param>
+            <param name="taxB">Range of tax coefficent B</param>
+        </member>
+        <member name="M:OOProgramming.Domain.PayCalculator.CalculateSuper(System.Decimal)">
+            <summary>
+            Calculates the Superannuation per week by the gross pay.
+            </summary>
+            <param name="grossAmount">Employee's gross pay per week</param>
+            <returns>Employee's superannuation per week</returns>
+        </member>
+        <member name="M:OOProgramming.Domain.PayCalculator.CalculateGross(System.Decimal,System.Int32)">
+            <summary>
+            Calculates the Gross pay per week by the hour pay rate and hours per week
+            </summary>
+            <param name="payRate">Employee's pay rate per week</param>
+            <param name="hours">Employee's hour worked per week</param>
+            <returns></returns>
+        </member>
+        <member name="M:OOProgramming.Domain.PayCalculator.CalculateTax(System.Decimal)">
+            <summary>
+            Calculate Tax uses the formula  y=ax=b; where y is the tax amount per week,
+            x is the number of whole dollars in weekly earnings plus 99 cents
+            a and b are the coefficents for each set of formulas for each range of weekly earnings 
+            </summary>
+            <param name="grossAmount">Employee's gross pay per week</param>
+            <returns>Employee's tax amount per week</returns>
+        </member>
+        <member name="M:OOProgramming.Domain.PayCalculator.CalculateNet(System.Decimal,System.Decimal)">
+            <summary>
+            Calculates the Net pay per week by the gross pay and tax amount.
+            </summary>
+            <param name="grossAmount">Employee's gross pay per week</param>
+            <param name="tax">Employee's tax amount per week</param>
+            <returns>Employee's net pay per week</returns>
+        </member>
+        <member name="T:OOProgramming.Domain.PaySlip">
+            <summary>
+            Class a capture details accociated with an employee's pay slip record
+            A pay slip has 1 employee, and stores the details of the payment.
+            This includes the gross pay, super amount, net pay, hours, tax, and net pay.
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.GrossPay">
+            <summary>
+            The employee's gross pay per week for the current pay slip
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.Super">
+            <summary>
+            The employee's superannuation per week for the current pay slip
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.Hours">
+            <summary>
+            The employee's hours worked per week for the current pay slip
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.Tax">
+            <summary>
+            The employee's tax amount per week for the current pay slip
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.Net">
+            <summary>
+            The employee's net pay per week for the current pay slip
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Domain.PaySlip.Employee">
+            <summary>
+            The employee that the payslip is linked to
+            </summary>
+        </member>
+        <member name="M:OOProgramming.Domain.PaySlip.#ctor(System.Decimal,System.Decimal,System.Decimal,System.Int32,System.Decimal,OOProgramming.Domain.Employee)">
+            <summary>
+            Creates a pay slip for an employee
+            </summary>
+            <param name="gross">Employee's gross pay per week</param>
+            <param name="super">Employee's superannuation per week</param>
+            <param name="tax">Employee's tax amount per week</param>
+            <param name="hours">Employee's hours worked per week</param>
+            <param name="net">Employee's net pay per week</param>
+            <param name="employee">Employee that the payslip is linked to</param>
+        </member>
+        <member name="M:OOProgramming.Domain.PaySlip.ToString">
+            <summary>
+            Return string of pay slip details
+            </summary>
+            <returns>Pay slip details</returns>
+        </member>
+        <member name="T:OOProgramming.Persistence.CsvHandler">
+            <summary>
+            This class is used to read and write csv data
+            </summary>
+        </member>
+        <member name="M:OOProgramming.Persistence.CsvHandler.GetDirectory(System.String)">
+            <summary>
+            Gets the directory of a file
+            </summary>
+            <param name="file">The file name</param>
+            <returns>The path of the file</returns>
+        </member>
+        <member name="M:OOProgramming.Persistence.CsvHandler.ReadEmployeeCsvFile(System.String)">
+            <summary>
+            Reads a csv file that contains employee data
+            </summary>
+            <param name="path">The file path</param>
+            <returns>A collection of employees from the file</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Out of range values in csv</exception>
+        </member>
+        <member name="M:OOProgramming.Persistence.CsvHandler.ReadTaxCsvFile(System.String)">
+            <summary>
+            Reads either the taxrate-nothreshold.csv or taxrate-withthreshold.csv and creates a PayCalculator
+            </summary>
+            <param name="path">Path of the file</param>
+            <returns>A pay calculator that calculates tax,grosspay,netpay,superannuation</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Out of range values in csv</exception>
+        </member>
+        <member name="M:OOProgramming.Persistence.CsvHandler.WritePaySlipToCsv(OOProgramming.Domain.PaySlip,System.String)">
+            <summary>
+            Writes the csv file contain pay slip data
+            </summary>
+            <param name="paySlip">The payslip we want to write</param>
+            <param name="path">The file path that we want the file</param>
+        </member>
+        <member name="M:OOProgramming.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:OOProgramming.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OOProgramming.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="M:OOProgramming.UI.Form1.#ctor">
+            <summary>
+            Initialisation of the UI
+            </summary>
+        </member>
+        <member name="F:OOProgramming.UI.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OOProgramming.UI.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OOProgramming.UI.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
